@@ -8,11 +8,7 @@ beforeEach(() => {
 });
 
 test('layout must have an app header', () => {
-  expect(Component.getByRole('header')).toBeInTheDocument();
-});
-
-test('layout must have an app footer', () => {
-  expect(Component.getByRole('footer')).toBeInTheDocument();
+  expect(Component.getByRole('navigation')).toBeInTheDocument();
 });
 
 test('layout must have a logo', () => {
