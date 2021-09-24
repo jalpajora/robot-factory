@@ -1,4 +1,4 @@
-const Layout = () => {
+const Dashboard = () => {
   return (
     <main>
       <section className='container dashboard-content'>Content!</section>
@@ -6,4 +6,4 @@ const Layout = () => {
   );
 };
 
-export default Layout;
+export default Dashboard;
