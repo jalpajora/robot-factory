@@ -74,7 +74,7 @@ describe('When user clicks link', () => {
     const { getByTestId, getByText } = Component;
     expect(getByTestId('db-inventory')).toBeInTheDocument();
 
-    fireEvent.click(getByText('QA', { selector: 'a' }));
+    fireEvent.click(getByText('Ready to Ship', { selector: 'a' }));
     await waitFor(() => {
       expect(getByTestId('db-ready-to-ship')).toBeInTheDocument();
     });
@@ -84,7 +84,7 @@ describe('When user clicks link', () => {
     const { getByTestId, getByText } = Component;
     expect(getByTestId('db-inventory')).toBeInTheDocument();
 
-    fireEvent.click(getByText('QA', { selector: 'a' }));
+    fireEvent.click(getByText('Shipping', { selector: 'a' }));
     await waitFor(() => {
       expect(getByTestId('db-shipping')).toBeInTheDocument();
     });
