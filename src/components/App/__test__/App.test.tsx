@@ -53,16 +53,15 @@ describe('When user clicks link', () => {
         </Route>
       </MemoryRouter>
     );
-    return Component;
   });
 
   test('Logo link should render initial dashboard', () => {
-    expect(Component.getByTestId('db-inventory')).toBeInTheDocument();
+    expect(Component.getByTestId('db-main')).toBeInTheDocument();
   });
 
   test('"QA" link should render "QA" dashboard', async () => {
     const { getByTestId, getByText } = Component;
-    expect(getByTestId('db-inventory')).toBeInTheDocument();
+    expect(getByTestId('db-main')).toBeInTheDocument();
 
     fireEvent.click(getByText('QA', { selector: 'a' }));
     await waitFor(() => {
@@ -72,7 +71,7 @@ describe('When user clicks link', () => {
 
   test('"Ready to Ship" link should render "Ready to Ship" dashboard', async () => {
     const { getByTestId, getByText } = Component;
-    expect(getByTestId('db-inventory')).toBeInTheDocument();
+    expect(getByTestId('db-qa')).toBeInTheDocument();
 
     fireEvent.click(getByText('Ready to Ship', { selector: 'a' }));
     await waitFor(() => {
@@ -82,7 +81,7 @@ describe('When user clicks link', () => {
 
   test('"Shipping" link should render "Shipping" dashboard', async () => {
     const { getByTestId, getByText } = Component;
-    expect(getByTestId('db-inventory')).toBeInTheDocument();
+    expect(getByTestId('db-ready-to-ship')).toBeInTheDocument();
 
     fireEvent.click(getByText('Shipping', { selector: 'a' }));
     await waitFor(() => {
