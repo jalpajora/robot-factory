@@ -1,40 +1,64 @@
 import { Image, Button, Link, Box } from '@chakra-ui/react';
 import { ArrowForwardIcon } from '@chakra-ui/icons';
+import {
+  BrowserRouter as Router,
+  Link as RouterLink,
+  Switch,
+  Route,
+} from 'react-router-dom';
 
-import Dashboard from '../Dashboard';
+import {
+  MainDashboard,
+  ShippingDashboard,
+  ReadyToShipDashboard,
+  QaDashboard,
+} from '../Dashboard';
+
 import logo from '../../styles/images/logo.svg';
 
 function App() {
   return (
-    <div className='App' data-testid='app'>
-      <header>
-        <nav role='navigation'>
-          <Link href='/'>
-            <Image htmlWidth='100px' src={logo} alt='company logo' />
-            Robot Factory
-          </Link>
-          <Button
-            fontWeight='normal'
-            color='inherit'
-            variant='link'
-            data-testid='logout-btn'
-          >
-            Logout
-          </Button>
-        </nav>
-        {/* <Heading as='h1'>Robot Factory Portal</Heading> */}
-        <section className='container dashboard-header'>
-          <Box className='dashboard-menu'>
-            <Link href='#test'>QA</Link>
-            <ArrowForwardIcon color='pink.700' />
-            <Link href='#test'>Ready to Ship</Link>
-            <ArrowForwardIcon color='pink.700' />
-            <Link href='#test'>Shipping</Link>
-          </Box>
-        </section>
-      </header>
-      <Dashboard />
-    </div>
+    <Router>
+      <div className='App' data-testid='app'>
+        <header>
+          <nav role='navigation'>
+            <Link as={RouterLink} to='/' _hover={{ textDecoration: 'none' }}>
+              <Image htmlWidth='100px' src={logo} alt='company logo' />
+              Robot Factory
+            </Link>
+            <Button
+              fontWeight='normal'
+              color='inherit'
+              variant='link'
+              data-testid='logout-btn'
+            >
+              Logout
+            </Button>
+          </nav>
+          <section className='container dashboard-header'>
+            <Box className='dashboard-menu'>
+              <Link as={RouterLink} to='/qa'>
+                QA
+              </Link>
+              <ArrowForwardIcon color='pink.700' />
+              <Link as={RouterLink} to='/ready-to-ship'>
+                Ready to Ship
+              </Link>
+              <ArrowForwardIcon color='pink.700' />
+              <Link as={RouterLink} to='/shipping'>
+                Shipping
+              </Link>
+            </Box>
+          </section>
+        </header>
+        <Switch>
+          <Route path='/qa' children={<QaDashboard />} />
+          <Route path='/ready-to-ship' children={<ReadyToShipDashboard />} />
+          <Route path='/shipping' children={<ShippingDashboard />} />
+          <Route path='/' exact children={<MainDashboard />} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 

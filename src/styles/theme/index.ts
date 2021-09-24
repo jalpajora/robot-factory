@@ -46,6 +46,9 @@ const theme = extendTheme({
         justifyContent: 'space-between',
         // background: '#EDF2F7',
       },
+      '.logo:hover': {
+        textDecoration: 'none',
+      },
     },
   },
   colors: {

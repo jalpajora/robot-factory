@@ -1,9 +1,4 @@
-const Dashboard = () => {
-  return (
-    <main>
-      <section className='container dashboard-content'>Content!</section>
-    </main>
-  );
-};
-
-export default Dashboard;
+export { MainDashboard } from './Main';
+export { QaDashboard } from './QaDashboard';
+export { ReadyToShipDashboard } from './ReadyToShipDashboard';
+export { ShippingDashboard } from './ShippingDashboard';
