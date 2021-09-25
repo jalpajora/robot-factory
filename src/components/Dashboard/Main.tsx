@@ -1,10 +1,4 @@
-// import { Switch, Route } from 'react-router-dom';
-// import { ShippingDashboard, ReadyToShipDashboard, QaDashboard } from './';
-
-// import
-// const module = await import('/modules/myCustomModule.js');
-
-const MainDashboard = () => {
+const Main = () => {
   return (
     <main>
       <section className='container dashboard-content' data-testid='db-main'>
@@ -18,4 +12,4 @@ const MainDashboard = () => {
   );
 };
 
-export { MainDashboard };
+export default Main;

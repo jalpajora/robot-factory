@@ -1,4 +1,4 @@
-const QaDashboard = () => {
+const Qa = () => {
   return (
     <>
       <section className='container dashboard-qa' data-testid='db-qa'>
@@ -8,4 +8,4 @@ const QaDashboard = () => {
   );
 };
 
-export { QaDashboard };
+export default Qa;

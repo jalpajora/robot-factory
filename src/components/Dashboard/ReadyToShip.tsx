@@ -1,4 +1,4 @@
-const ReadyToShipDashboard = () => {
+const ReadyToShip = () => {
   return (
     <>
       <section
@@ -11,4 +11,4 @@ const ReadyToShipDashboard = () => {
   );
 };
 
-export { ReadyToShipDashboard };
+export default ReadyToShip;

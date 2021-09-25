@@ -1,4 +1,4 @@
-const ShippingDashboard = () => {
+const Shipping = () => {
   return (
     <>
       <section
@@ -11,4 +11,4 @@ const ShippingDashboard = () => {
   );
 };
 
-export { ShippingDashboard };
+export default Shipping;
