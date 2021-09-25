@@ -14,7 +14,12 @@ function Header({ children }: HeaderProps) {
 
 Header.Nav = () => (
   <nav role='navigation'>
-    <Link as={RouterLink} to='/' _hover={{ textDecoration: 'none' }}>
+    <Link
+      as={RouterLink}
+      to='/'
+      className='logo'
+      _hover={{ textDecoration: 'none' }}
+    >
       <Image htmlWidth='100px' src={logo} alt='company logo' />
       Robot Factory
     </Link>

@@ -8,14 +8,16 @@ const Shipping = React.lazy(() => import('./Shipping'));
 
 const Dashboard = () => {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <Switch>
-        <Route path='/qa' children={<Qa />} />
-        <Route path='/ready-to-ship' children={<ReadyToShip />} />
-        <Route path='/shipping' children={<Shipping />} />
-        <Route path='/' exact children={<Main />} />
-      </Switch>
-    </Suspense>
+    <main>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Switch>
+          <Route path='/qa' children={<Qa />} />
+          <Route path='/ready-to-ship' children={<ReadyToShip />} />
+          <Route path='/shipping' children={<Shipping />} />
+          <Route path='/' exact children={<Main />} />
+        </Switch>
+      </Suspense>
+    </main>
   );
 };
 
