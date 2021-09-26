@@ -1,43 +1,21 @@
-import { useState, useEffect } from 'react';
 import { Box, Button } from '@chakra-ui/react';
 import Table from '../../Table';
 import TableActions from '../../TableActions';
+import { RobotsPayload } from '../../../state';
 
-const API_URL = 'http://localhost:5000';
+interface Props {
+  robots: RobotsPayload[];
+  generateNewBatch(): void;
+}
 
-const Qa = () => {
-  const [data, setData] = useState([]);
-  const [isGenerate, setGenerate] = useState(false);
-
-  useEffect(() => {
-    let generateData: null | (() => Promise<void>) = async () => {
-      const data = await fetchData();
-      setData(data);
-    };
-
-    if (isGenerate) {
-      generateData();
-    }
-
-    return () => {
-      generateData = null;
-    };
-  }, [isGenerate]);
-
-  const fetchData = async () => {
-    const response = await fetch(`${API_URL}/robots`);
-    const data = await response.json();
-
-    return data;
-  };
-
+const Qa = ({ robots = [], generateNewBatch }: Props) => {
   const handleGenerate = () => {
-    setGenerate(true);
+    generateNewBatch();
   };
 
   return (
     <section className='container dashboard-qa' data-testid='db-qa'>
-      {data.length ? (
+      {robots.length ? (
         <>
           <TableActions>
             <TableActions.Button
@@ -62,7 +40,7 @@ const Qa = () => {
               Factory Second
             </TableActions.Button>
           </TableActions>
-          <Table data={data} />
+          <Table data={robots} />
         </>
       ) : (
         <Box

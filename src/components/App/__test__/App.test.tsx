@@ -1,6 +1,8 @@
-import { render, RenderResult, fireEvent } from '@testing-library/react';
+import { RenderResult, fireEvent } from '@testing-library/react';
 import { MemoryRouter, Route } from 'react-router-dom';
 import { waitFor } from '@testing-library/dom';
+
+import { render } from '../../../__test__/test-utils';
 
 import App from '..';
 

@@ -1,19 +1,21 @@
-import {
-  render,
-  fireEvent,
-  RenderResult,
-  waitFor,
-} from '@testing-library/react';
-import QaDashboard from '../';
+import { fireEvent, RenderResult, waitFor } from '@testing-library/react';
+import App from '../../../App';
+import { render } from '../../../../__test__/test-utils';
+import {} from '../../../../state';
 
-describe('QA: Inital page state:', () => {
-  let Component: RenderResult;
-  let dashboard: HTMLElement;
-  beforeEach(() => {
-    Component = render(<QaDashboard />);
+let Component: RenderResult;
+let dashboard: HTMLElement;
+
+beforeEach(async () => {
+  Component = render(<App />);
+  fireEvent.click(Component.getByText('QA', { selector: 'a' }));
+
+  await waitFor(() => {
     dashboard = Component.getByTestId('db-qa');
   });
+});
 
+describe('QA: Inital page state:', () => {
   test('shows table with empty list', () => {
     expect(dashboard).toBeInTheDocument();
 
@@ -32,14 +34,7 @@ describe('QA: Inital page state:', () => {
 });
 
 describe('QA: UI After clicking "Generate Batch" button', () => {
-  let Component: RenderResult;
-  let dashboard: HTMLElement;
-  beforeEach(() => {
-    Component = render(<QaDashboard />);
-    dashboard = Component.getByTestId('db-qa');
-  });
-
-  test('displays table with data', async () => {
+  test('displays table with data and action buttons at the top of the table', async () => {
     expect(dashboard).toBeInTheDocument();
     expect(dashboard.querySelectorAll('table tbody tr').length).toBe(0);
 
@@ -50,18 +45,8 @@ describe('QA: UI After clicking "Generate Batch" button', () => {
     await waitFor(() => {
       // 10 rows
       expect(dashboard.querySelectorAll('table tbody tr').length).toBe(10);
-    });
-  });
 
-  test('displays action buttons at the top of the table', async () => {
-    expect(dashboard).toBeInTheDocument();
-    expect(dashboard.querySelectorAll('table tbody tr').length).toBe(0);
-
-    fireEvent.click(
-      Component.getByText('Generate Batch', { selector: 'button' })
-    );
-
-    await waitFor(() => {
+      // Action Buttons
       expect(
         dashboard.querySelector('.bulk-extinguish-btn')
       ).toBeInTheDocument();
