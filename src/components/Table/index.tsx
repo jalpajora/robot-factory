@@ -7,7 +7,21 @@ import {
   Td,
 } from '@chakra-ui/react';
 
-const Table = () => {
+interface Props {
+  data: {
+    id: number;
+    name: string;
+    configuration: {
+      hasSentience: boolean;
+      hasWheels: boolean;
+      hasTracks: boolean;
+      numberOfRotors: number;
+      Colour: string;
+    };
+  }[];
+}
+const Table = ({ data = [] }: Props) => {
+  // console.log(data);
   return (
     <ChakraTable size='sm' border='thin' borderColor='gray.100'>
       <Thead borderTop='1px solid' borderColor='gray.200'>
@@ -23,7 +37,28 @@ const Table = () => {
         </Tr>
       </Thead>
       <Tbody>
-        <Tr>
+        {data.map(({ id, name, configuration }) => {
+          const {
+            hasSentience,
+            hasWheels,
+            hasTracks,
+            Colour,
+            numberOfRotors = 0,
+          } = configuration;
+          return (
+            <Tr key={`tr-${id}`}>
+              <Td>{id}</Td>
+              <Td>{name}</Td>
+              <Td>{hasSentience ? 'Yes' : 'No'}</Td>
+              <Td>{hasWheels ? 'Yes' : 'No'}</Td>
+              <Td>{hasTracks ? 'Yes' : 'No'}</Td>
+              <Td>{numberOfRotors.toString()}</Td>
+              <Td>{Colour}</Td>
+              <Td></Td>
+            </Tr>
+          );
+        })}
+        {/* <Tr>
           <Td></Td>
           <Td></Td>
           <Td></Td>
@@ -42,7 +77,7 @@ const Table = () => {
           <Td></Td>
           <Td></Td>
           <Td></Td>
-        </Tr>
+        </Tr> */}
       </Tbody>
     </ChakraTable>
   );

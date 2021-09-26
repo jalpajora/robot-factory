@@ -4,7 +4,7 @@ import {
   RenderResult,
   waitFor,
 } from '@testing-library/react';
-import QaDashboard from '../Qa';
+import QaDashboard from '../';
 
 describe('QA: Inital page state:', () => {
   let Component: RenderResult;
@@ -26,7 +26,7 @@ describe('QA: Inital page state:', () => {
   });
 
   test('Shows "Ready to QA robots? Click \'Generate Batch\' button" to start.', () => {
-    const caption = dashboard.querySelector('table.qa-table caption');
+    const caption = dashboard.querySelector('.table-caption');
     expect(caption?.textContent).toMatch(/Ready to QA robots/);
   });
 });
@@ -66,7 +66,6 @@ describe('QA: UI After clicking "Generate Batch" button', () => {
         dashboard.querySelector('.bulk-extinguish-btn')
       ).toBeInTheDocument();
       expect(dashboard.querySelector('.bulk-recycle-btn')).toBeInTheDocument();
-      expect(dashboard.querySelector('.bulk-qa-btn')).toBeInTheDocument();
       expect(dashboard.querySelector('.bulk-factory-btn')).toBeInTheDocument();
       expect(dashboard.querySelector('.bulk-pass-btn')).toBeInTheDocument();
     });

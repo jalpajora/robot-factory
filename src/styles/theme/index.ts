@@ -7,7 +7,8 @@ const theme = extendTheme({
         display: 'flex',
         flexDirection: 'column',
         height: '100vh',
-        color: 'gray.600',
+        color: 'black',
+        // color: 'gray.600',
       },
       header: {
         backgroundColor: 'white',
@@ -48,6 +49,9 @@ const theme = extendTheme({
       },
       'a:focus:not(:focus-visible), button:focus:not(:focus-visible)': {
         boxShadow: 'none',
+      },
+      table: {
+        color: 'black',
       },
     },
   },
