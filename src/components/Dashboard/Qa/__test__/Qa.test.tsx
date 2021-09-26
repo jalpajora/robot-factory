@@ -1,7 +1,6 @@
 import { fireEvent, RenderResult, waitFor } from '@testing-library/react';
 import App from '../../../App';
 import { render } from '../../../../__test__/test-utils';
-import {} from '../../../../state';
 
 let Component: RenderResult;
 let dashboard: HTMLElement;

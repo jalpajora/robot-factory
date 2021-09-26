@@ -1,6 +1,8 @@
 import { ActionType } from '../action-types';
 
-export interface RobotsPayload {
+type RobotsStatuses = 'on fire' | 'rusty' | 'loose screws' | 'paint scratched';
+
+export interface Robots {
   id: number;
   name: string;
   configuration: {
@@ -10,13 +12,13 @@ export interface RobotsPayload {
     numberOfRotors: number;
     Colour: string;
   };
-  statuses: ['on fire', 'rusty', 'loose screws', 'paint scratched'];
+  statuses: RobotsStatuses[];
 }
 
 export interface GenerateNewBatchAction {
   type: ActionType.GENERATE_NEW_BATCH;
-  payload: RobotsPayload[];
+  payload: Robots[];
 }
 
 export type Action = GenerateNewBatchAction;
-export type State = RobotsPayload[];
+export type State = Robots[];
