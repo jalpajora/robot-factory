@@ -7,7 +7,8 @@ const theme = extendTheme({
         display: 'flex',
         flexDirection: 'column',
         height: '100vh',
-        color: 'gray.600',
+        color: 'black',
+        // color: 'gray.600',
       },
       header: {
         backgroundColor: 'white',
@@ -18,8 +19,12 @@ const theme = extendTheme({
         alignItems: 'center',
         padding: '1rem',
       },
+      'nav .logo': {
+        color: '#97266d',
+      },
       'nav, .dashboard-header': {
         borderBottom: '1px solid rgb(235, 235, 235)',
+        background: '#fafafa',
       },
       '.dashboard-header': {
         width: '100%',
@@ -32,6 +37,21 @@ const theme = extendTheme({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
+      },
+      '.dashboard-menu a': {
+        // color: '#f848c4',
+        // color: '#97266d',
+        fontWeight: '600',
+      },
+      main: {
+        height: '100vh',
+        padding: '16px',
+      },
+      'a:focus:not(:focus-visible), button:focus:not(:focus-visible)': {
+        boxShadow: 'none',
+      },
+      table: {
+        color: 'black',
       },
     },
   },

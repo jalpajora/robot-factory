@@ -1,8 +1,9 @@
-import { render } from '@testing-library/react';
 import MainDashboard from '../Main';
 import QaDashboard from '../Qa';
 import ReadyToShipDashboard from '../ReadyToShip';
 import ShippingDashboard from '../Shipping';
+
+import { render } from '../../../__test__/test-utils';
 
 test('renders main dashboard', () => {
   const { getByTestId } = render(<MainDashboard />);
