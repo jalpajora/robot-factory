@@ -1,10 +1,10 @@
 import { Box, Button } from '@chakra-ui/react';
 import Table from '../../Table';
 import TableActions from '../../TableActions';
-import { RobotsPayload } from '../../../state';
+import { Robots } from '../../../state';
 
 interface Props {
-  robots: RobotsPayload[];
+  robots: Robots[];
   generateNewBatch(): void;
 }
 

@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { RobotsPayload } from '../../state';
+import { Robots } from '../../state';
 
 const Main = React.lazy(() => import('./Main'));
 const Qa = React.lazy(() => import('./Qa'));
@@ -8,7 +8,7 @@ const ReadyToShip = React.lazy(() => import('./ReadyToShip'));
 const Shipping = React.lazy(() => import('./Shipping'));
 
 interface Props {
-  robots: RobotsPayload[];
+  robots: Robots[];
   generateNewBatch(): void;
 }
 
