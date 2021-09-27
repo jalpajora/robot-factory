@@ -1,0 +1,4 @@
+{
+  "/robots/:id/extinguish/": "/robots/:id",
+  "/robots/recycle/:id": "/robots/:id"
+}

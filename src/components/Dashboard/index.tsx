@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { Robots } from '../../state';
+import { Robot, State } from '../../state';
 
 const Main = React.lazy(() => import('./Main'));
 const Qa = React.lazy(() => import('./Qa'));
@@ -8,8 +8,10 @@ const ReadyToShip = React.lazy(() => import('./ReadyToShip'));
 const Shipping = React.lazy(() => import('./Shipping'));
 
 interface Props {
-  robots: Robots[];
+  robots: State;
   generateNewBatch(): void;
+  extinguishItem: (items: Robot[], id: number) => void;
+  recycleItem(item: Robot): void;
 }
 
 const Dashboard = (props: Props) => {

@@ -1,12 +1,17 @@
 import { Action, State } from '../actions';
 import { ActionType } from '../action-types/index';
 
-export const initialRobotsState: State = [];
+export const initialRobotsState: State = {
+  items: [],
+};
 
 const reducer = (state: State = initialRobotsState, action: Action) => {
   switch (action.type) {
     case ActionType.GENERATE_NEW_BATCH:
-      return [...state, ...action.payload];
+      return {
+        ...state,
+        items: action.payload,
+      };
     default:
       return state;
   }

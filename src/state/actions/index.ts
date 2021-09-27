@@ -1,24 +1,45 @@
 import { ActionType } from '../action-types';
 
-type RobotsStatuses = 'on fire' | 'rusty' | 'loose screws' | 'paint scratched';
+export type RobotStatuses =
+  | 'on fire'
+  | 'rusty'
+  | 'loose screws'
+  | 'paint scratched';
 
-export interface Robots {
+export interface RobotConfiguration {
+  hasSentience: boolean;
+  hasWheels: boolean;
+  hasTracks: boolean;
+  numberOfRotors: number;
+  Colour: string;
+}
+
+export interface Robot {
   id: number;
   name: string;
-  configuration: {
-    hasSentience: boolean;
-    hasWheels: boolean;
-    hasTracks: boolean;
-    numberOfRotors: number;
-    Colour: string;
-  };
-  statuses: RobotsStatuses[];
+  configuration: RobotConfiguration;
+  statuses: RobotStatuses[];
+}
+
+export interface QaStatus {
+  forExtinguish?: number[];
+  forRecycle?: number[];
+  forSecondaryFactory?: number[];
+  passedQa?: number[];
 }
 
 export interface GenerateNewBatchAction {
   type: ActionType.GENERATE_NEW_BATCH;
-  payload: Robots[];
+  payload: Robot[];
 }
 
-export type Action = GenerateNewBatchAction;
-export type State = Robots[];
+export interface SetQaAction {
+  type: ActionType.SET_QA_STATUS;
+  payload: Robot[];
+}
+
+export type Action = GenerateNewBatchAction | SetQaAction;
+export interface State {
+  items: Robot[];
+  qaStatus?: QaStatus;
+}

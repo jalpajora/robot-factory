@@ -9,7 +9,10 @@ import { actionCreators, RootState } from '../../state';
 function App() {
   const robots = useSelector((state: RootState) => state.robots);
   const dispatch = useDispatch();
-  const { generateNewBatch } = bindActionCreators(actionCreators, dispatch);
+  const { generateNewBatch, extinguishItem, recycleItem } = bindActionCreators(
+    actionCreators,
+    dispatch
+  );
 
   return (
     <div className='App' data-testid='app'>
@@ -18,7 +21,12 @@ function App() {
           <Header.Nav />
           <Header.DashboardNav />
         </Header>
-        <Dashboard robots={robots} generateNewBatch={generateNewBatch} />
+        <Dashboard
+          robots={robots}
+          generateNewBatch={generateNewBatch}
+          extinguishItem={extinguishItem}
+          recycleItem={recycleItem}
+        />
       </Router>
     </div>
   );
