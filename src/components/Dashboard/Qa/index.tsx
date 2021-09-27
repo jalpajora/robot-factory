@@ -1,63 +1,32 @@
-import { Box, Button } from '@chakra-ui/react';
-import Table from '../../Table';
-import TableActions from '../../TableActions';
-import { Robots } from '../../../state';
+import TableContainer from '../../TableContainer';
+import { Robot, State } from '../../../state';
 
 interface Props {
-  robots: Robots[];
-  generateNewBatch(): void;
+  robots: State;
+  extinguishItem: (items: Robot[], id: number) => void;
+  recycleItem: (items: Robot[], id: number) => void;
+  addToShipment: (items: Robot[], id: number) => void;
 }
 
-const Qa = ({ robots = [], generateNewBatch }: Props) => {
-  const handleGenerate = () => {
-    generateNewBatch();
+const Qa = ({ robots, extinguishItem, recycleItem, addToShipment }: Props) => {
+  const handleAction = (items: Robot[], id: number, name: string) => {
+    if (name === 'recycle-btn') {
+      recycleItem(items, Number(id));
+    } else if (name === 'extinguish-btn') {
+      extinguishItem(items, Number(id));
+    } else if (name === 'add-shipment-btn') {
+      addToShipment(items, Number(id));
+    }
   };
 
   return (
     <section className='container dashboard-qa' data-testid='db-qa'>
-      {robots.length ? (
-        <>
-          <TableActions>
-            <TableActions.Button
-              className='bulk-extinguish-btn'
-              onClick={() => {}}
-            >
-              Extinguish
-            </TableActions.Button>
-            <TableActions.Button
-              className='bulk-recycle-btn'
-              onClick={() => {}}
-            >
-              Recycle
-            </TableActions.Button>
-            <TableActions.Button className='bulk-pass-btn' onClick={() => {}}>
-              Pass QA
-            </TableActions.Button>
-            <TableActions.Button
-              className='bulk-factory-btn'
-              onClick={() => {}}
-            >
-              Factory Second
-            </TableActions.Button>
-          </TableActions>
-          <Table data={robots} />
-        </>
+      {robots.items.length ? (
+        <TableContainer items={robots.items} handleAction={handleAction} />
       ) : (
-        <Box
-          display='flex'
-          flexDirection='column'
-          alignItems='center'
-          className='table-caption'
-        >
-          <p>Ready to QA robots? Click 'Generate Batch' button to start.</p>
-          <Button
-            onClick={handleGenerate}
-            className='generate-batch-btn'
-            marginTop='2'
-          >
-            Generate Batch
-          </Button>
-        </Box>
+        <p style={{ textAlign: 'center' }}>
+          No robots are ready in queue for QA.
+        </p>
       )}
     </section>
   );

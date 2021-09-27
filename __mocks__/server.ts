@@ -4,8 +4,7 @@ import { setupServer } from 'msw/node';
 import { robots } from './db.json';
 
 export const server = setupServer(
-  rest.get('http://localhost:5000/robots', (req, res, ctx) => {
-    // console.log(JSON.stringify(robots));
+  rest.get('/robots', (req, res, ctx) => {
     return res(ctx.json(robots));
   })
 );

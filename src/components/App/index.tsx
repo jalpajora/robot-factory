@@ -1,15 +1,23 @@
+import { useEffect } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import Dashboard from '../Dashboard';
 import Header from '../Header';
-import { actionCreators, RootState } from '../../state';
+import { actionCreators, RootState, State } from '../../state';
 
 function App() {
-  const robots = useSelector((state: RootState) => state.robots);
+  const robots: State = useSelector((state: RootState) => state.robots);
   const dispatch = useDispatch();
-  const { generateNewBatch } = bindActionCreators(actionCreators, dispatch);
+  const { generateNewBatch, extinguishItem, recycleItem, addToShipment } =
+    bindActionCreators(actionCreators, dispatch);
+
+  useEffect(() => {
+    if (!robots.items.length) {
+      generateNewBatch();
+    }
+  }, [generateNewBatch, robots.items]);
 
   return (
     <div className='App' data-testid='app'>
@@ -18,7 +26,12 @@ function App() {
           <Header.Nav />
           <Header.DashboardNav />
         </Header>
-        <Dashboard robots={robots} generateNewBatch={generateNewBatch} />
+        <Dashboard
+          robots={robots}
+          extinguishItem={extinguishItem}
+          recycleItem={recycleItem}
+          addToShipment={addToShipment}
+        />
       </Router>
     </div>
   );
