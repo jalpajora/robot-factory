@@ -4,7 +4,7 @@
       "id": 1,
       "name": "Robot 1",
       "configuration": {
-        "hasSentience": false,
+        "hasSentience": true,
         "hasWheels": false,
         "hasTracks": false,
         "numberOfRotors": 0,
@@ -112,7 +112,7 @@
       "id": 10,
       "name": "Robot 10",
       "configuration": {
-        "hasSentience": false,
+        "hasSentience": true,
         "hasWheels": false,
         "hasTracks": false,
         "numberOfRotors": 0,

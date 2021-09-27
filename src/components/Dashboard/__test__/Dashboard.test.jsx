@@ -1,26 +1,41 @@
-import MainDashboard from '../Main';
-import QaDashboard from '../Qa';
-import ReadyToShipDashboard from '../ReadyToShip';
-import ShippingDashboard from '../Shipping';
-
+import { fireEvent, RenderResult, waitFor } from '@testing-library/react';
+import App from '../../App';
 import { render } from '../../../__test__/test-utils';
 
-test('renders main dashboard', () => {
-  const { getByTestId } = render(<MainDashboard />);
-  expect(getByTestId('db-main')).toBeInTheDocument();
+let Component: RenderResult;
+
+beforeEach(async () => {
+  Component = render(<App />);
 });
 
-test('renders "QA" dashboard', () => {
-  const { getByTestId } = render(<QaDashboard />);
-  expect(getByTestId('db-qa')).toBeInTheDocument();
+test('renders main dashboard', async () => {
+  fireEvent.click(Component.getByText(/Robot Factory/, { selector: 'a' }));
+
+  await waitFor(() => {
+    expect(Component.getByTestId('db-main')).toBeInTheDocument();
+  });
 });
 
-test('renders "Ready to Ship" dashboard', () => {
-  const { getByTestId } = render(<ReadyToShipDashboard />);
-  expect(getByTestId('db-ready-to-ship')).toBeInTheDocument();
+test('renders "QA" dashboard', async () => {
+  fireEvent.click(Component.getByText('QA', { selector: 'a' }));
+
+  await waitFor(() => {
+    expect(Component.getByTestId('db-qa')).toBeInTheDocument();
+  });
 });
 
-test('renders main dashboard', () => {
-  const { getByTestId } = render(<ShippingDashboard />);
-  expect(getByTestId('db-shipping')).toBeInTheDocument();
+test('renders "Ready to Ship" dashboard', async () => {
+  fireEvent.click(Component.getByText('Ready to Ship', { selector: 'a' }));
+
+  await waitFor(() => {
+    expect(Component.getByTestId('db-ready-to-ship')).toBeInTheDocument();
+  });
+});
+
+test('renders "Shipping" dashboard', async () => {
+  fireEvent.click(Component.getByText('Shipping', { selector: 'a' }));
+
+  await waitFor(() => {
+    expect(Component.getByTestId('db-shipping')).toBeInTheDocument();
+  });
 });

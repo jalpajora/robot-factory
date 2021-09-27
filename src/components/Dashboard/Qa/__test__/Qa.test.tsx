@@ -33,7 +33,7 @@ describe('QA: Inital page state:', () => {
 });
 
 describe('QA: UI After clicking "Generate Batch" button', () => {
-  test('displays table with data and action buttons at the top of the table', async () => {
+  test('displays table with data', async () => {
     expect(dashboard).toBeInTheDocument();
     expect(dashboard.querySelectorAll('table tbody tr').length).toBe(0);
 
@@ -44,14 +44,82 @@ describe('QA: UI After clicking "Generate Batch" button', () => {
     await waitFor(() => {
       // 10 rows
       expect(dashboard.querySelectorAll('table tbody tr').length).toBe(10);
-
-      // Action Buttons
-      expect(
-        dashboard.querySelector('.bulk-extinguish-btn')
-      ).toBeInTheDocument();
-      expect(dashboard.querySelector('.bulk-recycle-btn')).toBeInTheDocument();
-      expect(dashboard.querySelector('.bulk-factory-btn')).toBeInTheDocument();
-      expect(dashboard.querySelector('.bulk-pass-btn')).toBeInTheDocument();
     });
   });
 });
+
+describe('QA: Extinguish:', () => {
+  test('If robot has sentience and is on fire, "Extinguish" button should be displayed', () => {
+    expect(dashboard.querySelectorAll('table tbody tr').length).toBe(10);
+
+    dashboard.querySelectorAll('table tbody tr').forEach((element) => {
+      const sentience = element.querySelector(
+        'td[data-testid="col-sentience"]'
+      );
+      const statuses = element.querySelector('td[data-testid="col-statuses"]');
+
+      if (
+        sentience !== null &&
+        statuses !== null &&
+        sentience.textContent === 'Yes' &&
+        statuses.textContent?.includes('on fire')
+      ) {
+        expect(
+          element.querySelector('button.extinguish-btn')
+        ).toBeInTheDocument();
+      } else {
+        expect(
+          element.querySelector('button.extinguish-btn')
+        ).not.toBeInTheDocument();
+      }
+    });
+  });
+
+  test('Removes "on fire" in status when Extinguish button is clicked', () => {
+    // Go back to this
+  });
+});
+
+// console.log(statuses);
+// console.log(statuses?.textContent);
+// expect(false).toBeTruthy();
+// if (sentience?.textContent === 'Yes')
+// expect(sentience?.textContent).toBe('Yes');
+
+// expect(element.querySelector('button.recycle-btn')).toBeInTheDocument();
+
+// expect(element.querySelector('button.pass-qa-btn')).toBeInTheDocument();
+
+// expect(
+//   element.querySelector('button.factory-second-btn')
+// ).toBeInTheDocument();
+
+// describe('QA: Recycle:', () => {
+//   test('Clicks Recycle button with 0 selected rows', () => {});
+
+//   test('Clicks Recycle button with all rows selected (1 item categorized as "For Recycle")', () => {});
+
+//   test('Clicks Recycle button with few rows selected (items not categorized as "For Recycle")', () => {});
+
+//   test('Clicks Recycle button with few rows selected (1 item categorized as "For Recycle")', () => {});
+// });
+
+// describe('QA: Pass QA:', () => {
+//   test('Clicks Pass QA button with 0 selected rows', () => {});
+
+//   test('Clicks Pass QA button with all rows selected (1 item categorized as "For Pass QA")', () => {});
+
+//   test('Clicks Pass QA button with few rows selected (items not categorized as "For Pass QA")', () => {});
+
+//   test('Clicks Pass QA button with few rows selected (1 item categorized as "For Pass QA")', () => {});
+// });
+
+// describe('QA: Factory Secondary:', () => {
+//   test('Clicks Factory Secondary button with 0 selected rows', () => {});
+
+//   test('Clicks Factory Secondary button with all rows selected (1 item categorized as "For Factory Secondary")', () => {});
+
+//   test('Clicks Factory Secondary button with few rows selected (items not categorized as "For Factory Secondary")', () => {});
+
+//   test('Clicks Factory Secondary button with few rows selected (1 item categorized as " For Factory Secondary")', () => {});
+// });

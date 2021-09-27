@@ -2,9 +2,9 @@
   "robots": [
     {
       "id": 1,
-      "name": "Mock Robot 1",
+      "name": "Robot 1",
       "configuration": {
-        "hasSentience": false,
+        "hasSentience": true,
         "hasWheels": false,
         "hasTracks": false,
         "numberOfRotors": 0,
@@ -14,7 +14,7 @@
     },
     {
       "id": 2,
-      "name": "Mock Robot 2",
+      "name": "Robot 2",
       "configuration": {
         "hasSentience": false,
         "hasWheels": false,
@@ -26,7 +26,7 @@
     },
     {
       "id": 3,
-      "name": "Mock Robot 3",
+      "name": "Robot 3",
       "configuration": {
         "hasSentience": false,
         "hasWheels": false,
@@ -38,7 +38,7 @@
     },
     {
       "id": 4,
-      "name": "Mock Robot 4",
+      "name": "Robot 4",
       "configuration": {
         "hasSentience": false,
         "hasWheels": false,
@@ -50,7 +50,7 @@
     },
     {
       "id": 5,
-      "name": "Mock Robot 5",
+      "name": "Robot 5",
       "configuration": {
         "hasSentience": false,
         "hasWheels": false,
@@ -62,7 +62,7 @@
     },
     {
       "id": 6,
-      "name": "Mock Robot 6",
+      "name": "Robot 6",
       "configuration": {
         "hasSentience": false,
         "hasWheels": false,
@@ -74,7 +74,7 @@
     },
     {
       "id": 7,
-      "name": "Mock Robot 7",
+      "name": "Robot 7",
       "configuration": {
         "hasSentience": false,
         "hasWheels": false,
@@ -86,7 +86,7 @@
     },
     {
       "id": 8,
-      "name": "Mock Robot 8",
+      "name": "Robot 8",
       "configuration": {
         "hasSentience": false,
         "hasWheels": false,
@@ -98,7 +98,7 @@
     },
     {
       "id": 9,
-      "name": "Mock Robot 9",
+      "name": "Robot 9",
       "configuration": {
         "hasSentience": false,
         "hasWheels": false,
@@ -110,9 +110,9 @@
     },
     {
       "id": 10,
-      "name": "Mock Robot 10",
+      "name": "Robot 10",
       "configuration": {
-        "hasSentience": false,
+        "hasSentience": true,
         "hasWheels": false,
         "hasTracks": false,
         "numberOfRotors": 0,
