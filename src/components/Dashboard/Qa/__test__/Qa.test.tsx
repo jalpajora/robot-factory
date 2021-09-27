@@ -80,29 +80,58 @@ describe('QA: Extinguish:', () => {
   });
 });
 
-// console.log(statuses);
-// console.log(statuses?.textContent);
-// expect(false).toBeTruthy();
-// if (sentience?.textContent === 'Yes')
-// expect(sentience?.textContent).toBe('Yes');
+describe('QA: Recycle:', () => {
+  test('If robot has fewer than 3 or greater than 8 rotors, "Recycle" button should be displayed', () => {
+    dashboard.querySelectorAll('table tbody tr').forEach((element) => {
+      const rotors = element.querySelector('td[data-testid="col-rotors"]');
 
-// expect(element.querySelector('button.recycle-btn')).toBeInTheDocument();
+      if (rotors !== null) {
+        const noOfRotors = Number(rotors.textContent);
+        if (noOfRotors < 3 || noOfRotors > 8) {
+          expect(
+            element.querySelector('button.recycle-btn')
+          ).toBeInTheDocument();
+        }
+      }
+    });
+  });
 
-// expect(element.querySelector('button.pass-qa-btn')).toBeInTheDocument();
+  test('If robot has any number of rotors and is color blue, "Recycle" button should be displayed', () => {
+    dashboard.querySelectorAll('table tbody tr').forEach((element) => {
+      const rotors = element.querySelector('td[data-testid="col-rotors"]');
+      const colour = element.querySelector('td[data-testid="col-colour"]');
 
-// expect(
-//   element.querySelector('button.factory-second-btn')
-// ).toBeInTheDocument();
+      if (rotors !== null && colour !== null) {
+        const noOfRotors = Number(rotors.textContent);
+        const colourText = (colour.textContent || '').toLowerCase();
 
-// describe('QA: Recycle:', () => {
-//   test('Clicks Recycle button with 0 selected rows', () => {});
+        if (noOfRotors > 0 && colourText === 'blue') {
+          expect(
+            element.querySelector('button.recycle-btn')
+          ).toBeInTheDocument();
+        }
+      }
+    });
+  });
 
-//   test('Clicks Recycle button with all rows selected (1 item categorized as "For Recycle")', () => {});
+  test('If robot has wheels and tracks, "Recycle" button should be displayed', () => {
+    dashboard.querySelectorAll('table tbody tr').forEach((element) => {
+      const wheels = element.querySelector('td[data-testid="col-wheels"]');
+      const tracks = element.querySelector('td[data-testid="col-tracks"]');
 
-//   test('Clicks Recycle button with few rows selected (items not categorized as "For Recycle")', () => {});
-
-//   test('Clicks Recycle button with few rows selected (1 item categorized as "For Recycle")', () => {});
-// });
+      if (wheels !== null && tracks !== null) {
+        if (
+          wheels.textContent?.includes('Yes') &&
+          tracks.textContent?.includes('Yes')
+        ) {
+          expect(
+            element.querySelector('button.recycle-btn')
+          ).toBeInTheDocument();
+        }
+      }
+    });
+  });
+});
 
 // describe('QA: Pass QA:', () => {
 //   test('Clicks Pass QA button with 0 selected rows', () => {});
