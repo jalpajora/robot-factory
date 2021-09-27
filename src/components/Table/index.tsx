@@ -37,6 +37,7 @@ const Table = ({ extinguishItem, recycleItem }: Props) => {
       // factory second
     }
   };
+
   return (
     <ChakraTable size='sm' border='thin' borderColor='gray.100'>
       <Thead borderTop='1px solid' borderColor='gray.200'>
@@ -72,7 +73,13 @@ const Table = ({ extinguishItem, recycleItem }: Props) => {
               <Td data-testid='col-tracks'>{hasTracks ? 'Yes' : 'No'}</Td>
               <Td data-testid='col-rotors'>{numberOfRotors.toString()}</Td>
               <Td data-testid='col-colour'>{Colour}</Td>
-              <Td data-testid='col-statuses'>{statuses.join(', ')}</Td>
+              <Td data-testid='col-statuses'>
+                <ul>
+                  {statuses.map((status, i) => (
+                    <li key={`statuses-${id}-${i}`}>{status}</li>
+                  ))}
+                </ul>
+              </Td>
               <Td>
                 <TableActions
                   id={id}

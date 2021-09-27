@@ -1,7 +1,6 @@
 {
   "robots": [
     {
-      "id": 1,
       "name": "Robot 1",
       "configuration": {
         "hasSentience": true,
@@ -10,7 +9,12 @@
         "numberOfRotors": 0,
         "Colour": "blue"
       },
-      "statuses": ["on fire", "rusty", "loose screws", "paint scratched"]
+      "statuses": [
+        "rusty",
+        "loose screws",
+        "paint scratched"
+      ],
+      "id": 1
     },
     {
       "id": 2,
@@ -22,7 +26,12 @@
         "numberOfRotors": 0,
         "Colour": "blue"
       },
-      "statuses": ["on fire", "rusty", "loose screws", "paint scratched"]
+      "statuses": [
+        "on fire",
+        "rusty",
+        "loose screws",
+        "paint scratched"
+      ]
     },
     {
       "id": 3,
@@ -34,7 +43,12 @@
         "numberOfRotors": 0,
         "Colour": "blue"
       },
-      "statuses": ["on fire", "rusty", "loose screws", "paint scratched"]
+      "statuses": [
+        "on fire",
+        "rusty",
+        "loose screws",
+        "paint scratched"
+      ]
     },
     {
       "id": 4,
@@ -46,7 +60,12 @@
         "numberOfRotors": 0,
         "Colour": "blue"
       },
-      "statuses": ["on fire", "rusty", "loose screws", "paint scratched"]
+      "statuses": [
+        "on fire",
+        "rusty",
+        "loose screws",
+        "paint scratched"
+      ]
     },
     {
       "id": 5,
@@ -58,7 +77,12 @@
         "numberOfRotors": 0,
         "Colour": "blue"
       },
-      "statuses": ["on fire", "rusty", "loose screws", "paint scratched"]
+      "statuses": [
+        "on fire",
+        "rusty",
+        "loose screws",
+        "paint scratched"
+      ]
     },
     {
       "id": 6,
@@ -70,7 +94,12 @@
         "numberOfRotors": 0,
         "Colour": "blue"
       },
-      "statuses": ["on fire", "rusty", "loose screws", "paint scratched"]
+      "statuses": [
+        "on fire",
+        "rusty",
+        "loose screws",
+        "paint scratched"
+      ]
     },
     {
       "id": 7,
@@ -82,7 +111,12 @@
         "numberOfRotors": 0,
         "Colour": "blue"
       },
-      "statuses": ["on fire", "rusty", "loose screws", "paint scratched"]
+      "statuses": [
+        "on fire",
+        "rusty",
+        "loose screws",
+        "paint scratched"
+      ]
     },
     {
       "id": 8,
@@ -94,7 +128,12 @@
         "numberOfRotors": 0,
         "Colour": "blue"
       },
-      "statuses": ["on fire", "rusty", "loose screws", "paint scratched"]
+      "statuses": [
+        "on fire",
+        "rusty",
+        "loose screws",
+        "paint scratched"
+      ]
     },
     {
       "id": 9,
@@ -106,10 +145,14 @@
         "numberOfRotors": 0,
         "Colour": "blue"
       },
-      "statuses": ["on fire", "rusty", "loose screws", "paint scratched"]
+      "statuses": [
+        "on fire",
+        "rusty",
+        "loose screws",
+        "paint scratched"
+      ]
     },
     {
-      "id": 10,
       "name": "Robot 10",
       "configuration": {
         "hasSentience": true,
@@ -118,7 +161,12 @@
         "numberOfRotors": 0,
         "Colour": "blue"
       },
-      "statuses": ["on fire", "rusty", "loose screws", "paint scratched"]
+      "statuses": [
+        "rusty",
+        "loose screws",
+        "paint scratched"
+      ],
+      "id": 10
     }
   ]
 }

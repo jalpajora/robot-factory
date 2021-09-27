@@ -33,12 +33,12 @@ export interface GenerateNewBatchAction {
   payload: Robot[];
 }
 
-export interface SetQaAction {
-  type: ActionType.SET_QA_STATUS;
+export interface UpdateItemAction {
+  type: ActionType.UPDATE_ITEM;
   payload: Robot[];
 }
 
-export type Action = GenerateNewBatchAction | SetQaAction;
+export type Action = GenerateNewBatchAction | UpdateItemAction;
 export interface State {
   items: Robot[];
   qaStatus?: QaStatus;

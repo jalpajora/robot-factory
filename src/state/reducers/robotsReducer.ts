@@ -8,6 +8,7 @@ export const initialRobotsState: State = {
 const reducer = (state: State = initialRobotsState, action: Action) => {
   switch (action.type) {
     case ActionType.GENERATE_NEW_BATCH:
+    case ActionType.UPDATE_ITEM:
       return {
         ...state,
         items: action.payload,

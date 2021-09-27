@@ -4,6 +4,8 @@ import { Action } from '../actions';
 import AppLocalStorage from '../../utils/AppLocalStorage';
 import { Robot } from '../';
 
+const localStorage = new AppLocalStorage();
+
 const fetchData = async () => {
   const response = await fetch(`/robots`);
   const data = await response.json();
@@ -26,8 +28,6 @@ const updateData = async (url: string, method: string, item?: Robot) => {
 };
 
 export const generateNewBatch = () => {
-  const localStorage = new AppLocalStorage();
-
   return async (dispatch: Dispatch<Action>) => {
     const items: Robot[] = await fetchData();
 
@@ -65,17 +65,23 @@ export const extinguishItem = (items: Robot[], id: number) => {
       selectedItem
     );
 
-    let responseData;
+    let responseData: Robot;
     try {
       responseData = await response.json();
     } catch {
       responseData = await response;
     }
-    console.log(responseData);
+
+    const updatedState = items.map((item) =>
+      item.id === responseData.id ? responseData : item
+    );
+
+    dispatch({
+      type: ActionType.UPDATE_ITEM,
+      payload: updatedState,
+    });
+    localStorage.setList({ items: updatedState });
   };
-  // TODO: Update localstorage here
-  // TODO: Dispatch here
-  // dispatch
 };
 
 export const recycleItem = (item: Robot) => {
@@ -92,6 +98,7 @@ export const recycleItem = (item: Robot) => {
     } catch {
       responseData = await response;
     }
+
     console.log(responseData);
   };
   // TODO: Update localstorage here

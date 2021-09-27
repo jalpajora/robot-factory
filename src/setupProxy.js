@@ -1,7 +1,6 @@
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
 module.exports = (app) => {
-  console.log(app);
   app.use(
     '/robots/recycle',
     createProxyMiddleware({
