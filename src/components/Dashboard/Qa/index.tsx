@@ -6,7 +6,7 @@ interface Props {
   robots: State;
   generateNewBatch(): void;
   extinguishItem: (items: Robot[], id: number) => void;
-  recycleItem(item: Robot): void;
+  recycleItem: (items: Robot[], id: number) => void;
 }
 
 const Qa = ({

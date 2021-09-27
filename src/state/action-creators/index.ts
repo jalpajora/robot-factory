@@ -84,24 +84,24 @@ export const extinguishItem = (items: Robot[], id: number) => {
   };
 };
 
-export const recycleItem = (item: Robot) => {
+export const recycleItem = (items: Robot[], id: number) => {
   return async (dispatch: Dispatch<Action>) => {
-    const response = await updateData(
-      // TODO: Go back to this format
-      '/robots/recycle/' + item.id,
-      'DELETE'
-    );
-
-    let responseData;
     try {
-      responseData = await response.json();
-    } catch {
-      responseData = await response;
-    }
+      await updateData(
+        // TODO: Go back to this format
+        '/robots/recycle/' + id,
+        'DELETE'
+      );
 
-    console.log(responseData);
+      const updatedState = items.filter((item) => item.id !== id);
+
+      dispatch({
+        type: ActionType.DELETE_ITEM,
+        payload: updatedState,
+      });
+      localStorage.setList({ items: updatedState });
+    } catch {
+      console.error('Something went wrong');
+    }
   };
-  // TODO: Update localstorage here
-  // TODO: Dispatch here
-  // dispatch
 };

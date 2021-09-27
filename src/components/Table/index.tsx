@@ -10,11 +10,11 @@ import {
 import { TableContext } from '../TableContainer';
 import TableActions from '../TableActions';
 import { Robot } from '../../state';
-import { isForExtinguish } from '../../utils/qaStatusHelpers';
+import { isForExtinguish, isForRecycle } from '../../utils/qaStatusHelpers';
 
 interface Props {
   extinguishItem: (items: Robot[], id: number) => void;
-  recycleItem: (item: Robot) => void;
+  recycleItem: (items: Robot[], id: number) => void;
 }
 
 const Table = ({ extinguishItem, recycleItem }: Props) => {
@@ -28,7 +28,7 @@ const Table = ({ extinguishItem, recycleItem }: Props) => {
     }
 
     if (name === 'recycle-btn') {
-      // recycleItem()
+      recycleItem(items, Number(id));
     } else if (name === 'extinguish-btn') {
       extinguishItem(items, Number(id));
     } else if (name === 'factory-second') {
@@ -85,6 +85,7 @@ const Table = ({ extinguishItem, recycleItem }: Props) => {
                   id={id}
                   handleAction={handleAction}
                   showExinguish={isForExtinguish(item)}
+                  showRecycle={isForRecycle(item)}
                 />
               </Td>
             </Tr>

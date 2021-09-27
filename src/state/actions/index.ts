@@ -38,7 +38,15 @@ export interface UpdateItemAction {
   payload: Robot[];
 }
 
-export type Action = GenerateNewBatchAction | UpdateItemAction;
+export interface DeleteItemAction {
+  type: ActionType.DELETE_ITEM;
+  payload: Robot[];
+}
+
+export type Action =
+  | GenerateNewBatchAction
+  | UpdateItemAction
+  | DeleteItemAction;
 export interface State {
   items: Robot[];
   qaStatus?: QaStatus;

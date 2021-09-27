@@ -7,7 +7,7 @@ export const TableContext = React.createContext(initialRobotsState);
 interface Props {
   robots: State;
   extinguishItem: (items: Robot[], id: number) => void;
-  recycleItem: (item: Robot) => void;
+  recycleItem: (items: Robot[], id: number) => void;
 }
 
 const TableContainer = ({ robots, extinguishItem, recycleItem }: Props) => {

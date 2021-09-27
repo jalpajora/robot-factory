@@ -9,6 +9,7 @@ const reducer = (state: State = initialRobotsState, action: Action) => {
   switch (action.type) {
     case ActionType.GENERATE_NEW_BATCH:
     case ActionType.UPDATE_ITEM:
+    case ActionType.DELETE_ITEM:
       return {
         ...state,
         items: action.payload,
