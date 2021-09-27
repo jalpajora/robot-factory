@@ -1,19 +1,22 @@
 import React from 'react';
-import { State, initialRobotsState, Robot } from '../../state';
+import { Robot } from '../../state';
 import Table from '../Table';
 
-export const TableContext = React.createContext(initialRobotsState);
-
-interface Props {
-  robots: State;
-  extinguishItem: (items: Robot[], id: number) => void;
-  recycleItem: (items: Robot[], id: number) => void;
+export interface TableContainerProps {
+  items: Robot[];
+  handleAction: (items: Robot[], id: number, name: string) => void;
 }
 
-const TableContainer = ({ robots, extinguishItem, recycleItem }: Props) => {
+export const TableContext = React.createContext<TableContainerProps | null>(
+  null
+);
+
+const TableContainer = (props: TableContainerProps) => {
+  const tableContext: TableContainerProps = props;
+
   return (
-    <TableContext.Provider value={robots}>
-      <Table extinguishItem={extinguishItem} recycleItem={recycleItem} />
+    <TableContext.Provider value={tableContext}>
+      <Table />
     </TableContext.Provider>
   );
 };

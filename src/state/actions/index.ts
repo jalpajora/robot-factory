@@ -19,14 +19,10 @@ export interface Robot {
   name: string;
   configuration: RobotConfiguration;
   statuses: RobotStatuses[];
+  qaStatus?: QaStatus;
 }
 
-export interface QaStatus {
-  forExtinguish?: number[];
-  forRecycle?: number[];
-  forSecondaryFactory?: number[];
-  passedQa?: number[];
-}
+export type QaStatus = '' | 'Passed QA' | 'Factory Second' | 'Ready to Ship';
 
 export interface GenerateNewBatchAction {
   type: ActionType.GENERATE_NEW_BATCH;
@@ -34,8 +30,8 @@ export interface GenerateNewBatchAction {
 }
 
 export interface UpdateItemAction {
-  type: ActionType.UPDATE_ITEM;
-  payload: Robot[];
+  type: ActionType.EXTINGUISH_ITEM;
+  payload: Robot;
 }
 
 export interface DeleteItemAction {
@@ -43,11 +39,18 @@ export interface DeleteItemAction {
   payload: Robot[];
 }
 
+export interface AddToShipmentAction {
+  type: ActionType.ADD_TO_SHIPMENT;
+  payload: Robot;
+}
+
 export type Action =
   | GenerateNewBatchAction
   | UpdateItemAction
-  | DeleteItemAction;
+  | DeleteItemAction
+  | AddToShipmentAction;
+
 export interface State {
   items: Robot[];
-  qaStatus?: QaStatus;
+  readyForShipping: Robot[];
 }

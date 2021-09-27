@@ -1,48 +1,32 @@
-import { Box, Button } from '@chakra-ui/react';
 import TableContainer from '../../TableContainer';
 import { Robot, State } from '../../../state';
 
 interface Props {
   robots: State;
-  generateNewBatch(): void;
   extinguishItem: (items: Robot[], id: number) => void;
   recycleItem: (items: Robot[], id: number) => void;
+  addToShipment: (items: Robot[], id: number) => void;
 }
 
-const Qa = ({
-  robots,
-  generateNewBatch,
-  extinguishItem,
-  recycleItem,
-}: Props) => {
-  const handleGenerate = () => {
-    generateNewBatch();
+const Qa = ({ robots, extinguishItem, recycleItem, addToShipment }: Props) => {
+  const handleAction = (items: Robot[], id: number, name: string) => {
+    if (name === 'recycle-btn') {
+      recycleItem(items, Number(id));
+    } else if (name === 'extinguish-btn') {
+      extinguishItem(items, Number(id));
+    } else if (name === 'add-shipment-btn') {
+      addToShipment(items, Number(id));
+    }
   };
 
   return (
     <section className='container dashboard-qa' data-testid='db-qa'>
       {robots.items.length ? (
-        <TableContainer
-          robots={robots}
-          extinguishItem={extinguishItem}
-          recycleItem={recycleItem}
-        />
+        <TableContainer items={robots.items} handleAction={handleAction} />
       ) : (
-        <Box
-          display='flex'
-          flexDirection='column'
-          alignItems='center'
-          className='table-caption'
-        >
-          <p>Ready to QA robots? Click 'Generate Batch' button to start.</p>
-          <Button
-            onClick={handleGenerate}
-            className='generate-batch-btn'
-            marginTop='2'
-          >
-            Generate Batch
-          </Button>
-        </Box>
+        <p style={{ textAlign: 'center' }}>
+          No robots are ready in queue for QA.
+        </p>
       )}
     </section>
   );

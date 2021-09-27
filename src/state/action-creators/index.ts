@@ -1,10 +1,8 @@
 import { ActionType } from '../action-types';
 import { Dispatch } from 'redux';
 import { Action } from '../actions';
-import AppLocalStorage from '../../utils/AppLocalStorage';
 import { Robot } from '../';
-
-const localStorage = new AppLocalStorage();
+import { getQaStatus } from '../../utils/qaStatusHelpers';
 
 const fetchData = async () => {
   const response = await fetch(`/robots`);
@@ -33,14 +31,12 @@ export const generateNewBatch = () => {
 
     if (items.length) {
       // Success
-      localStorage.setList({ items });
       dispatch({
         type: ActionType.GENERATE_NEW_BATCH,
         payload: items,
       });
     } else {
       // Todo: Add fallback here
-      localStorage.setList({ items: [] });
     }
   };
 };
@@ -52,9 +48,13 @@ export const extinguishItem = (items: Robot[], id: number) => {
       .map((item) => {
         const statuses = item.statuses;
 
-        return {
+        const updatedItem = {
           ...item,
           statuses: statuses.filter((status) => status !== 'on fire'),
+        };
+        return {
+          ...updatedItem,
+          qaStatus: getQaStatus(updatedItem),
         };
       });
 
@@ -72,15 +72,10 @@ export const extinguishItem = (items: Robot[], id: number) => {
       responseData = await response;
     }
 
-    const updatedState = items.map((item) =>
-      item.id === responseData.id ? responseData : item
-    );
-
     dispatch({
-      type: ActionType.UPDATE_ITEM,
-      payload: updatedState,
+      type: ActionType.EXTINGUISH_ITEM,
+      payload: responseData,
     });
-    localStorage.setList({ items: updatedState });
   };
 };
 
@@ -99,9 +94,18 @@ export const recycleItem = (items: Robot[], id: number) => {
         type: ActionType.DELETE_ITEM,
         payload: updatedState,
       });
-      localStorage.setList({ items: updatedState });
     } catch {
       console.error('Something went wrong');
     }
+  };
+};
+
+export const addToShipment = (items: Robot[], id: number) => {
+  return (dispatch: Dispatch<Action>) => {
+    const item = items.filter((item) => item.id === id)[0];
+    dispatch({
+      type: ActionType.ADD_TO_SHIPMENT,
+      payload: item,
+    });
   };
 };

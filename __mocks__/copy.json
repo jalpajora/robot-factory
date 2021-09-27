@@ -1,16 +1,16 @@
 {
   "robots": [
     {
-      "id": 1,
       "name": "Robot 1",
       "configuration": {
         "hasSentience": true,
         "hasWheels": false,
         "hasTracks": false,
-        "numberOfRotors": 0,
+        "numberOfRotors": 3,
         "Colour": "red"
       },
-      "statuses": ["on fire"]
+      "statuses": ["on fire"],
+      "id": 1
     },
     {
       "id": 2,
@@ -118,7 +118,7 @@
         "numberOfRotors": 3,
         "Colour": "pink"
       },
-      "statuses": ["on fire"]
+      "statuses": ["on fire", "rusty"]
     }
   ]
 }

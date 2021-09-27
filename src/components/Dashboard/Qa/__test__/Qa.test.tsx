@@ -53,10 +53,8 @@ describe('QA: Extinguish:', () => {
     expect(dashboard.querySelectorAll('table tbody tr').length).toBe(10);
 
     dashboard.querySelectorAll('table tbody tr').forEach((element) => {
-      const sentience = element.querySelector(
-        'td[data-testid="col-sentience"]'
-      );
-      const statuses = element.querySelector('td[data-testid="col-statuses"]');
+      const sentience = element.querySelector('[data-testid="col-sentience"]');
+      const statuses = element.querySelector('[data-testid="col-statuses"]');
 
       if (
         sentience !== null &&
@@ -67,10 +65,6 @@ describe('QA: Extinguish:', () => {
         expect(
           element.querySelector('button.extinguish-btn')
         ).toBeInTheDocument();
-      } else {
-        expect(
-          element.querySelector('button.extinguish-btn')
-        ).not.toBeInTheDocument();
       }
     });
   });
@@ -83,9 +77,10 @@ describe('QA: Extinguish:', () => {
 describe('QA: Recycle:', () => {
   test('If robot has fewer than 3 or greater than 8 rotors, "Recycle" button should be displayed', () => {
     dashboard.querySelectorAll('table tbody tr').forEach((element) => {
-      const rotors = element.querySelector('td[data-testid="col-rotors"]');
-
+      const rotors = element.querySelector('[data-testid="col-rotors"]');
+      console.log(rotors?.textContent);
       if (rotors !== null) {
+        console.log('okay');
         const noOfRotors = Number(rotors.textContent);
         if (noOfRotors < 3 || noOfRotors > 8) {
           expect(
@@ -98,8 +93,8 @@ describe('QA: Recycle:', () => {
 
   test('If robot has any number of rotors and is color blue, "Recycle" button should be displayed', () => {
     dashboard.querySelectorAll('table tbody tr').forEach((element) => {
-      const rotors = element.querySelector('td[data-testid="col-rotors"]');
-      const colour = element.querySelector('td[data-testid="col-colour"]');
+      const rotors = element.querySelector('[data-testid="col-rotors"]');
+      const colour = element.querySelector('[data-testid="col-colour"]');
 
       if (rotors !== null && colour !== null) {
         const noOfRotors = Number(rotors.textContent);
@@ -116,8 +111,8 @@ describe('QA: Recycle:', () => {
 
   test('If robot has wheels and tracks, "Recycle" button should be displayed', () => {
     dashboard.querySelectorAll('table tbody tr').forEach((element) => {
-      const wheels = element.querySelector('td[data-testid="col-wheels"]');
-      const tracks = element.querySelector('td[data-testid="col-tracks"]');
+      const wheels = element.querySelector('[data-testid="col-wheels"]');
+      const tracks = element.querySelector('[data-testid="col-tracks"]');
 
       if (wheels !== null && tracks !== null) {
         if (

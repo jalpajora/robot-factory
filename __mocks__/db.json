@@ -1,16 +1,16 @@
 {
   "robots": [
     {
-      "id": 1,
       "name": "Robot 1",
       "configuration": {
         "hasSentience": true,
         "hasWheels": false,
         "hasTracks": false,
-        "numberOfRotors": 0,
-        "Colour": "blue"
+        "numberOfRotors": 3,
+        "Colour": "red"
       },
-      "statuses": ["on fire", "rusty", "loose screws", "paint scratched"]
+      "statuses": ["on fire"],
+      "id": 1
     },
     {
       "id": 2,
@@ -19,10 +19,10 @@
         "hasSentience": false,
         "hasWheels": false,
         "hasTracks": false,
-        "numberOfRotors": 0,
-        "Colour": "blue"
+        "numberOfRotors": 2,
+        "Colour": "purple"
       },
-      "statuses": ["on fire", "rusty", "loose screws", "paint scratched"]
+      "statuses": []
     },
     {
       "id": 3,
@@ -31,10 +31,10 @@
         "hasSentience": false,
         "hasWheels": false,
         "hasTracks": false,
-        "numberOfRotors": 0,
-        "Colour": "blue"
+        "numberOfRotors": 9,
+        "Colour": "purple"
       },
-      "statuses": ["on fire", "rusty", "loose screws", "paint scratched"]
+      "statuses": []
     },
     {
       "id": 4,
@@ -43,34 +43,34 @@
         "hasSentience": false,
         "hasWheels": false,
         "hasTracks": false,
-        "numberOfRotors": 0,
+        "numberOfRotors": 3,
         "Colour": "blue"
       },
-      "statuses": ["on fire", "rusty", "loose screws", "paint scratched"]
+      "statuses": ["paint scratched"]
     },
     {
       "id": 5,
       "name": "Robot 5",
       "configuration": {
         "hasSentience": false,
-        "hasWheels": false,
-        "hasTracks": false,
+        "hasWheels": true,
+        "hasTracks": true,
         "numberOfRotors": 0,
-        "Colour": "blue"
+        "Colour": "purple"
       },
-      "statuses": ["on fire", "rusty", "loose screws", "paint scratched"]
+      "statuses": []
     },
     {
       "id": 6,
       "name": "Robot 6",
       "configuration": {
         "hasSentience": false,
-        "hasWheels": false,
+        "hasWheels": true,
         "hasTracks": false,
         "numberOfRotors": 0,
-        "Colour": "blue"
+        "Colour": "green"
       },
-      "statuses": ["on fire", "rusty", "loose screws", "paint scratched"]
+      "statuses": ["loose screws"]
     },
     {
       "id": 7,
@@ -80,7 +80,7 @@
         "hasWheels": false,
         "hasTracks": false,
         "numberOfRotors": 0,
-        "Colour": "blue"
+        "Colour": "yellow"
       },
       "statuses": ["on fire", "rusty", "loose screws", "paint scratched"]
     },
@@ -115,10 +115,10 @@
         "hasSentience": true,
         "hasWheels": false,
         "hasTracks": false,
-        "numberOfRotors": 0,
-        "Colour": "blue"
+        "numberOfRotors": 3,
+        "Colour": "pink"
       },
-      "statuses": ["on fire", "rusty", "loose screws", "paint scratched"]
+      "statuses": ["on fire", "rusty"]
     }
   ]
 }

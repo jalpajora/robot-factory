@@ -6,8 +6,7 @@ interface Props {
   id: number;
   showExinguish: boolean;
   showRecycle?: boolean;
-  showPassQa?: boolean;
-  showFactorySecond?: boolean;
+  showAddShipment?: boolean;
 }
 
 const TableActions = ({
@@ -15,8 +14,7 @@ const TableActions = ({
   id,
   showExinguish,
   showRecycle,
-  showPassQa,
-  showFactorySecond,
+  showAddShipment,
 }: Props) => {
   return (
     <>
@@ -40,24 +38,14 @@ const TableActions = ({
           Recycle
         </Button>
       )}
-      {showPassQa && (
+      {showAddShipment && (
         <Button
-          name='pass-qa-btn'
-          className='pass-qa-btn'
+          name='add-shipment-btn'
+          className='add-shipment-btn'
           onClick={handleAction}
           data-id={id}
         >
-          Pass QA
-        </Button>
-      )}
-      {showFactorySecond && (
-        <Button
-          name='factory-second-btn'
-          className='factory-second-btn'
-          onClick={handleAction}
-          data-id={id}
-        >
-          Factory Second
+          Add to Shipment
         </Button>
       )}
     </>
