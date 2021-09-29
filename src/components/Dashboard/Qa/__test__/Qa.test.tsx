@@ -1,9 +1,4 @@
-import {
-  fireEvent,
-  RenderResult,
-  waitFor,
-  waitForElementToBeRemoved,
-} from '@testing-library/react';
+import { fireEvent, RenderResult, waitFor } from '@testing-library/react';
 import App from '../../../App';
 import { render } from '../../../../__test__/test-utils';
 

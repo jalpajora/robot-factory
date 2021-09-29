@@ -10,8 +10,15 @@ import { actionCreators, RootState, State } from '../../state';
 function App() {
   const robots: State = useSelector((state: RootState) => state.robots);
   const dispatch = useDispatch();
-  const { generateNewBatch, extinguishItem, recycleItem, addToShipment } =
-    bindActionCreators(actionCreators, dispatch);
+  const {
+    generateNewBatch,
+    extinguishItem,
+    recycleItem,
+    addToShipment,
+    removeFromShipment,
+    sendShipment,
+    recycleItems,
+  } = bindActionCreators(actionCreators, dispatch);
 
   useEffect(() => {
     if (!robots.items.length) {
@@ -31,6 +38,9 @@ function App() {
           extinguishItem={extinguishItem}
           recycleItem={recycleItem}
           addToShipment={addToShipment}
+          removeFromShipment={removeFromShipment}
+          sendShipment={sendShipment}
+          recycleItems={recycleItems}
         />
       </Router>
     </div>

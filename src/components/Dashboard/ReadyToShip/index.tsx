@@ -5,16 +5,16 @@ import { Robot, State } from '../../../state';
 
 interface Props {
   robots: State;
-  extinguishItem: (items: Robot[], id: number) => void;
-  recycleItem: (items: Robot[], id: number) => void;
+  removeFromShipment: (items: Robot[], id: number) => void;
+  sendShipment: (items: Robot[], id: number) => void;
 }
 
-const ReadyToShip = ({ robots }: Props) => {
+const ReadyToShip = ({ robots, removeFromShipment, sendShipment }: Props) => {
   const handleAction = (items: Robot[], id: number, name: string) => {
-    if (name === 'factory-second') {
-      // factory second
-    } else if (name === 'pass-qa') {
-      // factory second
+    if (name === 'send-shipment-btn') {
+      sendShipment(items, Number(id));
+    } else if (name === 'remove-from-shipment-btn') {
+      removeFromShipment(items, Number(id));
     }
   };
 

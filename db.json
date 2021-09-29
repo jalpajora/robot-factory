@@ -9,8 +9,9 @@
         "numberOfRotors": 3,
         "Colour": "red"
       },
-      "statuses": [],
-      "qaStatus": "Passed QA",
+      "statuses": ["on fire"],
+      "qaStatus": "",
+      "shippingStatus": "",
       "id": 1
     },
     {
@@ -98,7 +99,6 @@
       "statuses": ["on fire", "rusty", "loose screws", "paint scratched"]
     },
     {
-      "id": 9,
       "name": "Robot 9",
       "configuration": {
         "hasSentience": false,
@@ -107,7 +107,10 @@
         "numberOfRotors": 3,
         "Colour": "purple"
       },
-      "statuses": []
+      "statuses": [],
+      "qaStatus": "",
+      "shippingStatus": "",
+      "id": 9
     },
     {
       "name": "Robot 10",
@@ -120,7 +123,135 @@
       },
       "statuses": ["rusty"],
       "qaStatus": "Factory Second",
+      "shippingStatus": "Ready to Ship",
       "id": 10
+    },
+    {
+      "name": "Robot 11",
+      "configuration": {
+        "hasSentience": true,
+        "hasWheels": false,
+        "hasTracks": false,
+        "numberOfRotors": 3,
+        "Colour": "red"
+      },
+      "statuses": ["on fire"],
+      "qaStatus": "",
+      "shippingStatus": "",
+      "id": 11
+    },
+    {
+      "id": 12,
+      "name": "Robot 12",
+      "configuration": {
+        "hasSentience": false,
+        "hasWheels": false,
+        "hasTracks": false,
+        "numberOfRotors": 2,
+        "Colour": "purple"
+      },
+      "statuses": []
+    },
+    {
+      "id": 13,
+      "name": "Robot 13",
+      "configuration": {
+        "hasSentience": false,
+        "hasWheels": false,
+        "hasTracks": false,
+        "numberOfRotors": 9,
+        "Colour": "purple"
+      },
+      "statuses": []
+    },
+    {
+      "id": 14,
+      "name": "Robot 14",
+      "configuration": {
+        "hasSentience": false,
+        "hasWheels": false,
+        "hasTracks": false,
+        "numberOfRotors": 3,
+        "Colour": "blue"
+      },
+      "statuses": ["paint scratched"]
+    },
+    {
+      "id": 15,
+      "name": "Robot 15",
+      "configuration": {
+        "hasSentience": false,
+        "hasWheels": true,
+        "hasTracks": true,
+        "numberOfRotors": 0,
+        "Colour": "purple"
+      },
+      "statuses": []
+    },
+    {
+      "id": 16,
+      "name": "Robot 16",
+      "configuration": {
+        "hasSentience": false,
+        "hasWheels": true,
+        "hasTracks": false,
+        "numberOfRotors": 0,
+        "Colour": "green"
+      },
+      "statuses": ["loose screws"]
+    },
+    {
+      "id": 17,
+      "name": "Robot 17",
+      "configuration": {
+        "hasSentience": false,
+        "hasWheels": false,
+        "hasTracks": false,
+        "numberOfRotors": 0,
+        "Colour": "yellow"
+      },
+      "statuses": ["on fire", "rusty", "loose screws", "paint scratched"]
+    },
+    {
+      "id": 18,
+      "name": "Robot 18",
+      "configuration": {
+        "hasSentience": false,
+        "hasWheels": false,
+        "hasTracks": false,
+        "numberOfRotors": 0,
+        "Colour": "blue"
+      },
+      "statuses": ["on fire", "rusty", "loose screws", "paint scratched"]
+    },
+    {
+      "name": "Robot 19",
+      "configuration": {
+        "hasSentience": false,
+        "hasWheels": false,
+        "hasTracks": false,
+        "numberOfRotors": 3,
+        "Colour": "purple"
+      },
+      "statuses": [],
+      "qaStatus": "",
+      "shippingStatus": "",
+      "id": 19
+    },
+    {
+      "name": "Robot 20",
+      "configuration": {
+        "hasSentience": true,
+        "hasWheels": false,
+        "hasTracks": false,
+        "numberOfRotors": 3,
+        "Colour": "pink"
+      },
+      "statuses": ["rusty"],
+      "qaStatus": "Factory Second",
+      "shippingStatus": "Ready to Ship",
+      "id": 20
     }
-  ]
+  ],
+  "shipments": []
 }
