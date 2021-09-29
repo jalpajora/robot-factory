@@ -9,9 +9,22 @@
         "numberOfRotors": 3,
         "Colour": "red"
       },
-      "statuses": [],
-      "qaStatus": "Passed QA",
+      "statuses": ["on fire"],
+      "qaStatus": "",
+      "shippingStatus": "",
       "id": 1
+    },
+    {
+      "id": 2,
+      "name": "Robot 2",
+      "configuration": {
+        "hasSentience": false,
+        "hasWheels": false,
+        "hasTracks": false,
+        "numberOfRotors": 2,
+        "Colour": "purple"
+      },
+      "statuses": []
     },
     {
       "id": 3,
@@ -35,9 +48,7 @@
         "numberOfRotors": 3,
         "Colour": "blue"
       },
-      "statuses": [
-        "paint scratched"
-      ]
+      "statuses": ["paint scratched"]
     },
     {
       "id": 5,
@@ -61,9 +72,7 @@
         "numberOfRotors": 0,
         "Colour": "green"
       },
-      "statuses": [
-        "loose screws"
-      ]
+      "statuses": ["loose screws"]
     },
     {
       "id": 7,
@@ -75,12 +84,7 @@
         "numberOfRotors": 0,
         "Colour": "yellow"
       },
-      "statuses": [
-        "on fire",
-        "rusty",
-        "loose screws",
-        "paint scratched"
-      ]
+      "statuses": ["on fire", "rusty", "loose screws", "paint scratched"]
     },
     {
       "id": 8,
@@ -92,29 +96,21 @@
         "numberOfRotors": 0,
         "Colour": "blue"
       },
-      "statuses": [
-        "on fire",
-        "rusty",
-        "loose screws",
-        "paint scratched"
-      ]
+      "statuses": ["on fire", "rusty", "loose screws", "paint scratched"]
     },
     {
-      "id": 9,
       "name": "Robot 9",
       "configuration": {
         "hasSentience": false,
         "hasWheels": false,
         "hasTracks": false,
-        "numberOfRotors": 0,
-        "Colour": "blue"
+        "numberOfRotors": 3,
+        "Colour": "purple"
       },
-      "statuses": [
-        "on fire",
-        "rusty",
-        "loose screws",
-        "paint scratched"
-      ]
+      "statuses": [],
+      "qaStatus": "",
+      "shippingStatus": "",
+      "id": 9
     },
     {
       "name": "Robot 10",
@@ -125,10 +121,9 @@
         "numberOfRotors": 3,
         "Colour": "pink"
       },
-      "statuses": [
-        "on fire",
-        "rusty"
-      ],
+      "statuses": ["rusty"],
+      "qaStatus": "Factory Second",
+      "shippingStatus": "Ready to Ship",
       "id": 10
     },
     {
@@ -140,9 +135,9 @@
         "numberOfRotors": 3,
         "Colour": "red"
       },
-      "statuses": [
-        "on fire"
-      ],
+      "statuses": ["on fire"],
+      "qaStatus": "",
+      "shippingStatus": "",
       "id": 11
     },
     {
@@ -179,9 +174,7 @@
         "numberOfRotors": 3,
         "Colour": "blue"
       },
-      "statuses": [
-        "paint scratched"
-      ]
+      "statuses": ["paint scratched"]
     },
     {
       "id": 15,
@@ -205,9 +198,7 @@
         "numberOfRotors": 0,
         "Colour": "green"
       },
-      "statuses": [
-        "loose screws"
-      ]
+      "statuses": ["loose screws"]
     },
     {
       "id": 17,
@@ -219,12 +210,7 @@
         "numberOfRotors": 0,
         "Colour": "yellow"
       },
-      "statuses": [
-        "on fire",
-        "rusty",
-        "loose screws",
-        "paint scratched"
-      ]
+      "statuses": ["on fire", "rusty", "loose screws", "paint scratched"]
     },
     {
       "id": 18,
@@ -236,29 +222,21 @@
         "numberOfRotors": 0,
         "Colour": "blue"
       },
-      "statuses": [
-        "on fire",
-        "rusty",
-        "loose screws",
-        "paint scratched"
-      ]
+      "statuses": ["on fire", "rusty", "loose screws", "paint scratched"]
     },
     {
-      "id": 19,
       "name": "Robot 19",
       "configuration": {
         "hasSentience": false,
         "hasWheels": false,
         "hasTracks": false,
-        "numberOfRotors": 0,
-        "Colour": "blue"
+        "numberOfRotors": 3,
+        "Colour": "purple"
       },
-      "statuses": [
-        "on fire",
-        "rusty",
-        "loose screws",
-        "paint scratched"
-      ]
+      "statuses": [],
+      "qaStatus": "",
+      "shippingStatus": "",
+      "id": 19
     },
     {
       "name": "Robot 20",
@@ -269,10 +247,11 @@
         "numberOfRotors": 3,
         "Colour": "pink"
       },
-      "statuses": [
-        "rusty"
-      ],
+      "statuses": ["rusty"],
+      "qaStatus": "Factory Second",
+      "shippingStatus": "Ready to Ship",
       "id": 20
     }
-  ]
+  ],
+  "shipments": []
 }

@@ -4,9 +4,11 @@ import { Button } from '@chakra-ui/react';
 interface Props {
   handleAction: (e: React.MouseEvent<HTMLButtonElement>) => void;
   id: number;
-  showExinguish: boolean;
+  showExinguish?: boolean;
   showRecycle?: boolean;
   showAddShipment?: boolean;
+  showSendShipment?: boolean;
+  showRemoveShipment?: boolean;
 }
 
 const TableActions = ({
@@ -15,6 +17,8 @@ const TableActions = ({
   showExinguish,
   showRecycle,
   showAddShipment,
+  showSendShipment,
+  showRemoveShipment,
 }: Props) => {
   return (
     <>
@@ -46,6 +50,26 @@ const TableActions = ({
           data-id={id}
         >
           Add to Shipment
+        </Button>
+      )}
+      {showRemoveShipment && (
+        <Button
+          name='remove-from-shipment-btn'
+          className='remove-from-shipment-btn'
+          onClick={handleAction}
+          data-id={id}
+        >
+          Remove from Shipment
+        </Button>
+      )}
+      {showSendShipment && (
+        <Button
+          name='send-shipment-btn'
+          className='send-shipment-btn'
+          onClick={handleAction}
+          data-id={id}
+        >
+          Send Shipment
         </Button>
       )}
     </>

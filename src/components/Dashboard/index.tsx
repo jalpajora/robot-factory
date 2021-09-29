@@ -10,9 +10,12 @@ const Shipping = React.lazy(() => import('./Shipping'));
 
 interface Props {
   robots: State;
-  extinguishItem: (items: Robot[], id: number) => void;
+  extinguishItem: (id: number) => void;
   recycleItem: (items: Robot[], id: number) => void;
   addToShipment: (items: Robot[], id: number) => void;
+  removeFromShipment: (items: Robot[], id: number) => void;
+  sendShipment: (items: Robot[], id: number) => void;
+  recycleItems: (ids: number[]) => void;
 }
 
 const Dashboard = (props: Props) => {

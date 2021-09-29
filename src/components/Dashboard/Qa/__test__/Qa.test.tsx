@@ -15,41 +15,18 @@ beforeEach(async () => {
 });
 
 describe('QA: Inital page state:', () => {
-  test('shows table with empty list', () => {
+  test('shows table with 10 robots list', async () => {
     expect(dashboard).toBeInTheDocument();
 
+    await Component.findByRole('table');
     const totalRows = dashboard.querySelectorAll('table tbody tr').length;
-    expect(totalRows).toBe(0);
-  });
-
-  test('Shows "Generate Batch" button', () => {
-    expect(dashboard.querySelector('.generate-batch-btn')).toBeInTheDocument();
-  });
-
-  test('Shows "Ready to QA robots? Click \'Generate Batch\' button" to start.', () => {
-    const caption = dashboard.querySelector('.table-caption');
-    expect(caption?.textContent).toMatch(/Ready to QA robots/);
-  });
-});
-
-describe('QA: UI After clicking "Generate Batch" button', () => {
-  test('displays table with data', async () => {
-    expect(dashboard).toBeInTheDocument();
-    expect(dashboard.querySelectorAll('table tbody tr').length).toBe(0);
-
-    fireEvent.click(
-      Component.getByText('Generate Batch', { selector: 'button' })
-    );
-
-    await waitFor(() => {
-      // 10 rows
-      expect(dashboard.querySelectorAll('table tbody tr').length).toBe(10);
-    });
+    expect(totalRows).toBe(10);
   });
 });
 
 describe('QA: Extinguish:', () => {
-  test('If robot has sentience and is on fire, "Extinguish" button should be displayed', () => {
+  test('If robot has sentience and is on fire, "Extinguish" button should be displayed', async () => {
+    await Component.findByRole('table');
     expect(dashboard.querySelectorAll('table tbody tr').length).toBe(10);
 
     dashboard.querySelectorAll('table tbody tr').forEach((element) => {
@@ -75,12 +52,11 @@ describe('QA: Extinguish:', () => {
 });
 
 describe('QA: Recycle:', () => {
-  test('If robot has fewer than 3 or greater than 8 rotors, "Recycle" button should be displayed', () => {
+  test('If robot has fewer than 3 or greater than 8 rotors, "Recycle" button should be displayed', async () => {
+    await Component.findByRole('table');
     dashboard.querySelectorAll('table tbody tr').forEach((element) => {
       const rotors = element.querySelector('[data-testid="col-rotors"]');
-      console.log(rotors?.textContent);
       if (rotors !== null) {
-        console.log('okay');
         const noOfRotors = Number(rotors.textContent);
         if (noOfRotors < 3 || noOfRotors > 8) {
           expect(
@@ -91,7 +67,8 @@ describe('QA: Recycle:', () => {
     });
   });
 
-  test('If robot has any number of rotors and is color blue, "Recycle" button should be displayed', () => {
+  test('If robot has any number of rotors and is color blue, "Recycle" button should be displayed', async () => {
+    await Component.findByRole('table');
     dashboard.querySelectorAll('table tbody tr').forEach((element) => {
       const rotors = element.querySelector('[data-testid="col-rotors"]');
       const colour = element.querySelector('[data-testid="col-colour"]');
@@ -109,7 +86,8 @@ describe('QA: Recycle:', () => {
     });
   });
 
-  test('If robot has wheels and tracks, "Recycle" button should be displayed', () => {
+  test('If robot has wheels and tracks, "Recycle" button should be displayed', async () => {
+    await Component.findByRole('table');
     dashboard.querySelectorAll('table tbody tr').forEach((element) => {
       const wheels = element.querySelector('[data-testid="col-wheels"]');
       const tracks = element.querySelector('[data-testid="col-tracks"]');
@@ -128,22 +106,62 @@ describe('QA: Recycle:', () => {
   });
 });
 
-// describe('QA: Pass QA:', () => {
-//   test('Clicks Pass QA button with 0 selected rows', () => {});
+describe('QA: Pass QA:', () => {
+  test('If item is tagged as "Passed QA", "Add to Shipment" button should display in page', async () => {
+    await Component.findByRole('table');
+    dashboard.querySelectorAll('table tbody tr').forEach((element) => {
+      const qaStatus = element.querySelector('[data-testid="qa-status"]');
 
-//   test('Clicks Pass QA button with all rows selected (1 item categorized as "For Pass QA")', () => {});
+      if (qaStatus?.textContent?.includes('Passed QA')) {
+        const addShipment = element.querySelector('.add-shipment-btn');
+        expect(addShipment).toBeInTheDocument();
+      }
+    });
+  });
 
-//   test('Clicks Pass QA button with few rows selected (items not categorized as "For Pass QA")', () => {});
+  test('When "Add to Shipment" button is clicked, item should be moved to "Ready to Ship" panel', async () => {
+    await Component.findByRole('table');
+    dashboard.querySelectorAll('table tbody tr').forEach(async (element) => {
+      const qaStatus = element.querySelector('[data-testid="qa-status"]');
 
-//   test('Clicks Pass QA button with few rows selected (1 item categorized as "For Pass QA")', () => {});
-// });
+      if (qaStatus?.textContent?.includes('Passed QA')) {
+        const addShipment = element.querySelector(
+          '.add-shipment-btn'
+        ) as Element;
 
-// describe('QA: Factory Secondary:', () => {
-//   test('Clicks Factory Secondary button with 0 selected rows', () => {});
+        fireEvent.click(addShipment);
+        expect(element).not.toBeInTheDocument();
+      }
+    });
+  });
+});
 
-//   test('Clicks Factory Secondary button with all rows selected (1 item categorized as "For Factory Secondary")', () => {});
+describe('QA: Factory Secondary:', () => {
+  test('If item is tagged as "Factory Secondary", "Add to Shipment" button should display in page', async () => {
+    await Component.findByRole('table');
+    dashboard.querySelectorAll('table tbody tr').forEach((element) => {
+      const qaStatus = element.querySelector('[data-testid="qa-status"]');
 
-//   test('Clicks Factory Secondary button with few rows selected (items not categorized as "For Factory Secondary")', () => {});
+      if (qaStatus?.textContent?.includes('Factory Secondary')) {
+        const addShipment = element.querySelector('.add-shipment-btn');
+        expect(addShipment).toBeInTheDocument();
+      }
+    });
+  });
 
-//   test('Clicks Factory Secondary button with few rows selected (1 item categorized as " For Factory Secondary")', () => {});
-// });
+  test('When "Add to Shipment" button is clicked, item should be moved to "Ready to Ship" panel', async () => {
+    await Component.findByRole('table');
+    dashboard.querySelectorAll('table tbody tr').forEach(async (element) => {
+      const qaStatus = element.querySelector('[data-testid="qa-status"]');
+
+      if (qaStatus?.textContent?.includes('Factory Secondary')) {
+        const addShipment = element.querySelector(
+          '.add-shipment-btn'
+        ) as Element;
+
+        fireEvent.click(addShipment);
+        expect(element).not.toBeInTheDocument();
+      }
+    });
+  });
+});

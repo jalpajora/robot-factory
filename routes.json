@@ -1,5 +1,6 @@
 {
   "/robots/:id/extinguish/": "/robots/:id",
   "/robots": "/robots?_limit=10",
-  "/robots/recycle/:id": "/robots/:id"
+  "/robots/recycle/:id": "/robots/:id",
+  "/shipments/create/": "/shipments"
 }

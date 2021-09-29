@@ -9,7 +9,8 @@
         "numberOfRotors": 3,
         "Colour": "red"
       },
-      "statuses": ["on fire"],
+      "statuses": [],
+      "qaStatus": "Passed QA",
       "id": 1
     },
     {
@@ -103,13 +104,12 @@
         "hasSentience": false,
         "hasWheels": false,
         "hasTracks": false,
-        "numberOfRotors": 0,
-        "Colour": "blue"
+        "numberOfRotors": 3,
+        "Colour": "purple"
       },
-      "statuses": ["on fire", "rusty", "loose screws", "paint scratched"]
+      "statuses": []
     },
     {
-      "id": 10,
       "name": "Robot 10",
       "configuration": {
         "hasSentience": true,
@@ -118,7 +118,9 @@
         "numberOfRotors": 3,
         "Colour": "pink"
       },
-      "statuses": ["on fire", "rusty"]
+      "statuses": ["rusty"],
+      "qaStatus": "Factory Second",
+      "id": 10
     }
   ]
 }

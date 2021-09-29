@@ -5,6 +5,7 @@ import Table from '../Table';
 export interface TableContainerProps {
   items: Robot[];
   handleAction: (items: Robot[], id: number, name: string) => void;
+  recycleItems: (ids: number[]) => void;
 }
 
 export const TableContext = React.createContext<TableContainerProps | null>(
